@@ -1,12 +1,23 @@
 from utils.sentiment import predict_mood
 from datetime import datetime
 import csv
+from utils.emotion import detect_emotion
 
 print("=" * 50)
 print("      Intelligent Mental Health Companion")
 print("=" * 50)
 
 text = input("\nHow are you feeling today?\n> ")
+emotion, confidence, emoji, suggestion = detect_emotion(text)
+
+print("\nEmotion Detected")
+print("-" * 30)
+print(f"Emotion    : {emoji} {emotion.capitalize()}")
+print(f"Confidence : {confidence*100:.2f}%")
+
+print("\nSuggestion")
+print("-" * 30)
+print(suggestion)
 
 mood, score = predict_mood(text)
 emoji = {
@@ -34,11 +45,17 @@ else:
     print("\n😌 You seem calm today. Wishing you a wonderful day!")
 
 # Save data to CSV
-date = datetime.now()
+date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-with open("data/mood_dataset.csv", mode="a", newline="") as file:
+with open("data/mood_dataset.csv", mode="a", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
 
-    writer.writerow([date, mood, score])
+    writer.writerow([
+        date,
+        mood,
+        score,
+        emotion,
+        round(confidence, 4)
+    ])
 
-print("\n✅ Mood data saved successfully.")
+print("\n✅ Mood and Emotion data saved successfully.")

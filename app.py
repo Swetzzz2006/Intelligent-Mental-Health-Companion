@@ -1,61 +1,103 @@
 from utils.sentiment import predict_mood
+from utils.emotion import detect_emotion
+from utils.chatbot import chat
+from utils.tips import show_tips
+from utils.statistics import show_statistics
 from datetime import datetime
 import csv
-from utils.emotion import detect_emotion
 
 print("=" * 50)
 print("      Intelligent Mental Health Companion")
 print("=" * 50)
 
-text = input("\nHow are you feeling today?\n> ")
-emotion, confidence, emoji, suggestion = detect_emotion(text)
+while True:
 
-print("\nEmotion Detected")
-print("-" * 30)
-print(f"Emotion    : {emoji} {emotion.capitalize()}")
-print(f"Confidence : {confidence*100:.2f}%")
+    print("\nMain Menu")
+    print("1. Analyze Mood")
+    print("2. Chat with AI")
+    print("3. Mental Health Tips")
+    print("4. View Statistics")
+    print("5. Exit")
 
-print("\nSuggestion")
-print("-" * 30)
-print(suggestion)
+    choice = input("\nEnter your choice: ")
 
-mood, score = predict_mood(text)
-emoji = {
-    "Happy": "😊",
-    "Sad": "😔",
-    "Anxious": "😟",
-    "Neutral": "😐"
-}
-print("\nPrediction Result")
-print("-" * 30)
-print("Mood :", emoji[mood], mood)
-print("Sentiment Score :", score)
+    if choice == "1":
 
-# Supportive response
-if "Happy" in mood:
-    print("\n😊 Keep smiling! Continue doing what makes you happy.")
+        print("\nMood Analysis Selected")
 
-elif "Sad" in mood:
-    print("\n💙 Remember, difficult days don't last forever. Consider talking to someone you trust.")
+        text = input("\nHow are you feeling today?\n> ")
 
-elif "Anxious" in mood:
-    print("\n🌿 Try taking a few deep breaths or a short walk. Small breaks can help.")
+        emotion, confidence, emoji, suggestion = detect_emotion(text)
 
-else:
-    print("\n😌 You seem calm today. Wishing you a wonderful day!")
+        print("\nEmotion Detected")
+        print("-" * 30)
+        print(f"Emotion    : {emoji} {emotion.capitalize()}")
+        print(f"Confidence : {confidence*100:.2f}%")
 
-# Save data to CSV
-date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print("\nSuggestion")
+        print("-" * 30)
+        print(suggestion)
 
-with open("data/mood_dataset.csv", mode="a", newline="", encoding="utf-8") as file:
-    writer = csv.writer(file)
+        mood, score = predict_mood(text)
 
-    writer.writerow([
-        date,
-        mood,
-        score,
-        emotion,
-        round(confidence, 4)
-    ])
+        mood_emoji = {
+            "Happy": "😊",
+            "Sad": "😔",
+            "Anxious": "😟",
+            "Neutral": "😐"
+        }
 
-print("\n✅ Mood and Emotion data saved successfully.")
+        print("\nPrediction Result")
+        print("-" * 30)
+        print("Mood :", mood_emoji[mood], mood)
+        print("Sentiment Score :", score)
+
+        # Supportive response
+        if mood == "Happy":
+            print("\n😊 Keep smiling! Continue doing what makes you happy.")
+
+        elif mood == "Sad":
+            print("\n💙 Remember, difficult days don't last forever. Consider talking to someone you trust.")
+
+        elif mood == "Anxious":
+            print("\n🌿 Try taking a few deep breaths or a short walk. Small breaks can help.")
+
+        else:
+            print("\n😌 You seem calm today. Wishing you a wonderful day!")
+
+        # Save data to CSV
+        date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        with open("data/mood_dataset.csv", mode="a", newline="", encoding="utf-8") as file:
+            writer = csv.writer(file)
+
+            writer.writerow([
+                date,
+                mood,
+                score,
+                emotion,
+                round(confidence, 4)
+            ])
+
+        print("\n✅ Mood and Emotion data saved successfully.")
+        input("\nPress Enter to return to the Main Menu...")
+
+
+    elif choice == "2":
+        chat()
+        input("\nPress Enter to return to the Main Menu...")
+
+    elif choice == "3":
+        show_tips()
+        input("\nPress Enter to return to the Main Menu...")
+
+    elif choice == "4":
+        show_statistics()
+        input("\nPress Enter to return to the Main Menu...")
+
+    elif choice == "5":
+        print("\n👋 Thank you for using Intelligent Mental Health Companion.")
+        break
+
+    else:
+        print("\n❌ Invalid choice. Please try again.")

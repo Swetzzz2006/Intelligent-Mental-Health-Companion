@@ -1,4 +1,9 @@
-Date,Mood,Score,Emotion,Confidence2026-07-11 14:45:34,Happy,0.6948,joy,0.9717
+Date,Mood,Score,Emotion,Confidence
+2026-07-11 14:45:34,Happy,0.6948,joy,0.9717
 2026-07-11 14:45:59,Sad,-0.3167,fear,0.9926
 2026-07-11 14:46:44,Neutral,0.4215,joy,0.9768
 2026-07-11 15:44:21,Anxious,-0.2732,sadness,0.965
+2026-07-12 15:45:24,Neutral,0.0,joy,0.6767
+2026-07-12 15:46:30,Sad,-0.5106,sadness,0.9426
+2026-07-12 18:21:33,Sad,-0.34,anger,0.5743
+2026-07-12 18:22:25,Anxious,-0.25,fear,0.9484

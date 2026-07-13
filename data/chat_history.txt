@@ -32,3 +32,23 @@ Bot : 💙 I'm really sorry you're feeling this way.
 Remember, difficult days don't last forever. Consider talking to someone you trust.
 
 You don't have to go through difficult moments alone.
+
+2026-07-12 15:56:03.328834
+You : Im having an exam today
+Bot : It sounds like you're under a lot of pressure. 🌿 Take one task at a time, and don't forget to take short breaks.
+
+2026-07-12 15:56:18.439785
+You : i met my friend today
+Bot : That's wonderful to hear! 😊 Enjoy the moment and make some great memories!
+
+2026-07-12 17:07:47.715340
+You : im having my exam tomorrow
+Bot : It sounds like you're under a lot of pressure. 🌿 Take one task at a time, and don't forget to take short breaks.
+
+2026-07-12 17:08:14.595258
+You : i ate my favourite food today
+Bot : Thank you for sharing your thoughts with me. 😊 I'm always here to listen.
+
+2026-07-12 17:40:04.784518
+You : i had my favourite meal today
+Bot : Thank you for sharing your thoughts with me. 😊 I'm always here to listen.

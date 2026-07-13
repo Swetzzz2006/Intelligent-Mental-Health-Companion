@@ -79,3 +79,100 @@ def chat():
             file.write(f"Emotion : {emotion}\n")
             file.write(f"Confidence : {confidence:.4f}\n")
             file.write(f"Bot : {reply}\n")
+
+def chat_response(user):
+
+    text = user.lower()
+
+    if any(word in text for word in [
+        "sad", "cry", "depressed", "upset",
+        "lonely", "hurt", "heartbroken"
+    ]):
+        return (
+            "I'm sorry you're feeling this way. 💙 "
+            "Remember that difficult moments don't last forever. "
+            "Talking to someone you trust can really help."
+        )
+
+    elif any(word in text for word in [
+        "anxious", "nervous", "fear", "scared",
+        "stress", "stressed", "worried", "pressure",
+        "exam", "interview", "college"
+    ]):
+        return (
+            "It sounds like you're under a lot of pressure. 🌿 "
+            "Take one task at a time, and don't forget to take short breaks."
+        )
+
+    elif any(word in text for word in [
+        "happy", "great", "good", "excited",
+        "friend", "party", "celebrate", "fun"
+    ]):
+        return (
+            "That's wonderful to hear! 😊 "
+            "Enjoy the moment and make some great memories!"
+        )
+
+    elif any(word in text for word in [
+        "angry", "annoyed", "frustrated", "mad"
+    ]):
+        return (
+            "It's okay to feel angry sometimes. ❤️ "
+            "Take a few deep breaths before reacting."
+        )
+
+    elif any(word in text for word in [
+        "tired", "sleepy", "exhausted"
+    ]):
+        return (
+            "You sound tired. 😴 "
+            "Getting enough rest can make a big difference."
+        )
+
+    else:
+        return (
+            "Thank you for sharing your thoughts with me. 😊 "
+            "I'm always here to listen."
+        )
+def chat_response(user):
+
+    text = user.lower()
+
+    if any(word in text for word in [
+        "sad","cry","depressed","upset",
+        "lonely","hurt","heartbroken"
+    ]):
+        return (
+            "I'm sorry you're feeling this way. 💙 "
+            "Remember that difficult moments don't last forever."
+        )
+
+    elif any(word in text for word in [
+        "stress","stressed","exam",
+        "interview","college","anxious",
+        "nervous","pressure","worried"
+    ]):
+        return (
+            "It sounds like you're under pressure. 🌿 "
+            "Take one step at a time. You've got this!"
+        )
+
+    elif any(word in text for word in [
+        "happy","good","friend",
+        "party","excited","fun"
+    ]):
+        return (
+            "That's wonderful! 😊 Enjoy the moment and keep smiling!"
+        )
+
+    elif any(word in text for word in [
+        "angry","frustrated","mad"
+    ]):
+        return (
+            "It's okay to feel angry. ❤️ Try taking a few deep breaths."
+        )
+
+    else:
+        return (
+            "Thank you for sharing. 😊 I'm always here to listen."
+        )
